@@ -28,6 +28,7 @@
                     <?php
                     if (isset($_SESSION['usuario']) && $_SESSION['logado'] == true) {
                     ?>
+                    <th style="width: 10%;"></th>
                     <th style="width: 5%; text-align: center;"></th>
                     <th style="width: 5%;"></th>
                     <?php
@@ -47,6 +48,7 @@
                     <?php
                     if (isset($_SESSION['usuario']) && $_SESSION['logado'] == true) {
                     ?>
+                    <td style="width: 5%; text-align: center;"><a href="operacoes-medicamento.php?mode=DSP&idmedicamento=<?php echo $registro['IdMedicamento'] ?>">Visualizar dados</a></td>
                     <td style="width: 5%; text-align: center;"><a href="operacoes-medicamento.php?mode=UPD&idmedicamento=<?php echo $registro['IdMedicamento'] ?>">Editar</a></td>
                     <td style="width: 5%; text-align: center;">
                         <a href="../includes/deletar-medicamento.php?idmedicamento=<?php echo $registro['IdMedicamento'] ?>"

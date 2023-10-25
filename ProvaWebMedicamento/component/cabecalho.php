@@ -36,8 +36,8 @@
         <?php
             if (isset($_SESSION['usuario']) && $_SESSION['logado'] == true) {
         ?>
+                <a href="../pages/operacoes-medicamento.php?mode=INS">Cadastrar Medicamento</a>
                 <a style="background-color: #e76b00;" href="../includes/logoff_acesso.php" onclick="return confirm('Tem certeza de que deseja sair do sistema?')">Sair</a>
-
 
         <?php
             } else {

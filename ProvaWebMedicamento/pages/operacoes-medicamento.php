@@ -10,8 +10,8 @@
         if (isset($_SESSION['usuario']) && $_SESSION['logado'] == true) {
         include("../component/cabecalho.php");
         $mode = isset($_GET['mode']) ? strtoupper($_GET['mode']) : '';
-        if ($mode == "INS" || $mode == "UPD" || $mode == "DLT") {
-            $titulo = $mode == "INS" ? "Cadastro de Medicamento" : ($mode == "UPD" ? "Edição de Medicamento" : "Exclusão de Medicamento");
+        if ($mode == "INS" || $mode == "UPD" || $mode == "DLT" || $mode == "DSP") {
+            $titulo = $mode == "INS" ? "Cadastro de Medicamento" : ($mode == "UPD" ? "Edição de Medicamento" : ($mode == "DSP" ? "Visualização de Medicamento" : "Exclusão de Medicamento"));
             $url_post = "../includes/cadastrar-medicamento.php";
             echo "<h2 style='padding: 5px;'>$titulo</h2>";
 
@@ -45,34 +45,34 @@
             <div class="form-row">
                 <div class="columns-2">
                     <label for="MedicamentoNome">Nome</label>
-                    <input placeholder="Ex: Dipirona" type="text" name="MedicamentoNome" value="<?php echo isset($medicamentoNome) ? $medicamentoNome : ''; ?>" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?> required>
+                    <input placeholder="Ex: Dipirona" type="text" name="MedicamentoNome" value="<?php echo isset($medicamentoNome) ? $medicamentoNome : ''; ?>" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?> required>
                 </div>
 
                 <div class="columns-2">
 
                     <label for="RegistroMS">Registro MS</label>
-                    <input placeholder="Ex: ISENTO ou Número do Registro MS" type="text" name="RegistroMS" maxLength="13" value="<?php echo isset($registroMS) ? $registroMS : ''; ?>" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?> required>
+                    <input placeholder="Ex: ISENTO ou Número do Registro MS" type="text" name="RegistroMS" maxLength="13" value="<?php echo isset($registroMS) ? $registroMS : ''; ?>" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?> required>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="columns-1">
                     <label for="MedicamentoDescricao">Descrição</label>
-                    <textarea name="MedicamentoDescricao" rows="4" cols="50" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?>><?php echo isset($medicamentoDescricao) ? $medicamentoDescricao : ''; ?></textarea>
+                    <textarea name="MedicamentoDescricao" rows="4" cols="50" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>><?php echo isset($medicamentoDescricao) ? $medicamentoDescricao : ''; ?></textarea>
                 </div>
             </div>
             
             <div class="form-row">
                 <div class="columns-1">
                     <label for="Fabricante">Fabricante</label>
-                    <input placeholder="Ex: Astrazenica" type="text" name="Fabricante" value="<?php echo isset($fabricante) ? $fabricante : ''; ?>" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?>>
+                    <input placeholder="Ex: Astrazenica" type="text" name="Fabricante" value="<?php echo isset($fabricante) ? $fabricante : ''; ?>" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="columns-3">
                     <label for="IdTipoMedicamento">Tipo de Medicamento</label>
-                    <select name="IdTipoMedicamento" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?> required>
+                    <select name="IdTipoMedicamento" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?> required>
                         <?php
                         require_once($_SERVER['DOCUMENT_ROOT'] . '/ProvaWebMedicamento/includes/db.php');
 
@@ -95,12 +95,12 @@
 
                 <div class="columns-3">
                     <label for="QuantidadePerEmbalagem">Quantidade por Embalagem</label>
-                    <input placeholder="Ex: 12" type="number" name="QuantidadePerEmbalagem" value="<?php echo isset($quantidadePerEmbalagem) ? $quantidadePerEmbalagem : ''; ?>" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?>>
+                    <input placeholder="Ex: 12" type="number" name="QuantidadePerEmbalagem" value="<?php echo isset($quantidadePerEmbalagem) ? $quantidadePerEmbalagem : ''; ?>" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>>
                 </div>
 
                 <div class="columns-3">
                     <label for="Concentracao">Concentração</label>
-                    <input placeholder="Ex: 300mg" type="text" name="Concentracao" value="<?php echo isset($concentracao) ? $concentracao : ''; ?>" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?>>
+                    <input placeholder="Ex: 300mg" type="text" name="Concentracao" value="<?php echo isset($concentracao) ? $concentracao : ''; ?>" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>>
                 </div>
             </div>
                 
@@ -109,23 +109,23 @@
                     <label>Unidade de Medida</label>
                     <div>
                         <label>
-                            <input type="radio" name="UnidadeMedida" value="ml" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?>
+                            <input type="radio" name="UnidadeMedida" value="ml" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
                             <?php echo (isset($unidadeMedida) && $unidadeMedida === 'ml') ? 'checked' : ''; ?>> Mililitro
                         </label>
                         <label>
-                            <input type="radio" name="UnidadeMedida" value="g" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?>
+                            <input type="radio" name="UnidadeMedida" value="g" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
                             <?php echo (isset($unidadeMedida) && $unidadeMedida === 'g') ? 'checked' : ''; ?>> Grama
                         </label>
                         <label>
-                            <input type="radio" name="UnidadeMedida" value="mg" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?>
+                            <input type="radio" name="UnidadeMedida" value="mg" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
                             <?php echo (isset($unidadeMedida) && $unidadeMedida === 'mg') ? 'checked' : ''; ?>> Miligrama
                         </label>
                         <label>
-                            <input type="radio" name="UnidadeMedida" value="got" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?>
+                            <input type="radio" name="UnidadeMedida" value="got" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
                             <?php echo (isset($unidadeMedida) && $unidadeMedida === 'got') ? 'checked' : ''; ?>> Gotas
                         </label>
                         <label>
-                            <input type="radio" name="UnidadeMedida" value="mgo" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?>
+                            <input type="radio" name="UnidadeMedida" value="mgo" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
                             <?php echo (isset($unidadeMedida) && $unidadeMedida === 'mgo') ? 'checked' : ''; ?>> Microgotas
                         </label>
                     </div>
@@ -135,12 +135,19 @@
             <div class="form-row">
                 <div class="columns-1">
                     <label for="Bula">Bula</label>
-                    <textarea name="Bula" rows="8" cols="50" <?php echo ($mode == 'DLT') ? 'disabled' : ''; ?>><?php echo isset($bula) ? $bula : ''; ?></textarea>
+                    <textarea name="Bula" rows="8" cols="50" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>><?php echo isset($bula) ? $bula : ''; ?></textarea>
                 </div>
             </div>
         </div>
         <div class="alinha-centro" style="display: flex;justify-content: space-evenly;">
-        <a  style="background-color: #e76b00;" href='../pages/home.php'>Voltar</a><input <?php echo ($mode == 'DLT') ? 'class="btn-delete"' : ''; ?> type="submit" value="<?php echo ($mode == 'DLT') ? 'Excluir' : 'Enviar'; ?>" <?php echo ($mode == 'DLT') ? 'onclick="return confirm(\'Tem certeza de que deseja excluir este medicamento?\')"' : ''; ?>>
+        <a  style="background-color: #e76b00;" href='../pages/home.php'>Voltar</a>
+        <?php 
+        if($mode != 'DSP'){
+        ?>
+        <input <?php echo ($mode == 'DLT') ? 'class="btn-delete"' : ''; ?> type="submit" value="<?php echo ($mode == 'DLT') ? 'Excluir' : 'Enviar'; ?>" <?php echo ($mode == 'DLT') ? 'onclick="return confirm(\'Tem certeza de que deseja excluir este medicamento?\')"' : ''; ?>>
+        <?php 
+        }
+        ?>
         </div>
     </form>
     <?php
