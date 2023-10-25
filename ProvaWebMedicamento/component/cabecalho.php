@@ -36,11 +36,13 @@
         <?php
             if (isset($_SESSION['usuario']) && $_SESSION['logado'] == true) {
         ?>
-                <a href="../includes/logoff_acesso.php">Sair</a>
+                <a style="background-color: #e76b00;" href="../includes/logoff_acesso.php" onclick="return confirm('Tem certeza de que deseja sair do sistema?')">Sair</a>
+
+
         <?php
             } else {
             ?>
-                <a href="../pages/login.php">Fazer login</a>
+                <a style="background-color: #13b300;" href="../pages/login.php">Fazer login</a>
             <?php    
             }
         ?>
