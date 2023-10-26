@@ -14,6 +14,18 @@ O sistema apresenta funcionalidades básicas de um CRUD, criação, visualizaç�
 	- Cabecalho (../component/cabecalho.php): O cabeçalho é o mesmo presente em todas as telas do sistema, tela como funções voltar a tela inicial, sair ou cadastrar medicamento quando logado, e fazer login quando não conectado.
 	- Processemento do sistema (..includes): Todos os arquivos de processamento estão na pasta include, os documentos ali são responsáveis por fazer a conexão com o banco de dados além de inserir, deletar, editar e puxar os dados do banco de dados.
 
+### Usuarios de teste:
+	Usuario: andre.santos
+	Senha: 123456
+	
+	Usuario: professor.jivago
+	Senha: 159357
+
+	Usuario: bruce.wayne
+	Senha: batman
+	
+
+
 ### Contato: 
    andre.santos2@sou.ufmt.br
 	 andreluizsilvasantoss.al@gmail.com
