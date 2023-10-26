@@ -1,4 +1,0 @@
-RewriteEngine On
-RewriteBase /provawebmedicamento/
-
-RewriteRule ^$ home.php [L]
