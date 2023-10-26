@@ -19,12 +19,8 @@ if (isset($_SESSION['usuario']) && $_SESSION['logado'] == true) {
         mysqli_stmt_bind_param($stmt, "i", $idMedicamento);
     
         if (mysqli_stmt_execute($stmt)) {
-        ?>
-            <div class="btn-container">
-                <h2>Medicamento excluído com sucesso!</h2>
-                <a href="../pages/home.php" class="btn btn-primary">Voltar ao Menu Principal</a>
-            </div>
-        <?php
+            header('Location: ../includes/success.php?from=3&success=1');
+            exit;
         } else {
             echo "Erro ao excluir medicamento: " . mysqli_error($con);
         }
