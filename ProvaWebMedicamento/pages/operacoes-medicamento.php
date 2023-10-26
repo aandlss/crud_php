@@ -7,9 +7,9 @@
 <body>
     <?php 
         session_start();
-        if (isset($_SESSION['usuario']) && $_SESSION['logado'] == true) {
-        include("../component/cabecalho.php");
         $mode = isset($_GET['mode']) ? strtoupper($_GET['mode']) : '';
+        if ((isset($_SESSION['usuario']) && $_SESSION['logado'] == true) || $mode == 'DSP') {
+        include("../component/cabecalho.php");
         if ($mode == "INS" || $mode == "UPD" || $mode == "DLT" || $mode == "DSP") {
             $titulo = $mode == "INS" ? "Cadastro de Medicamento" : ($mode == "UPD" ? "Edição de Medicamento" : ($mode == "DSP" ? "Visualização de Medicamento" : "Exclusão de Medicamento"));
             $url_post = "../includes/cadastrar-medicamento.php";
@@ -108,26 +108,30 @@
                 <div class="columns-1">
                     <label>Unidade de Medida</label>
                     <div>
-                        <label>
-                            <input type="radio" name="UnidadeMedida" value="ml" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
-                            <?php echo (isset($unidadeMedida) && $unidadeMedida === 'ml') ? 'checked' : ''; ?>> Mililitro
-                        </label>
-                        <label>
-                            <input type="radio" name="UnidadeMedida" value="g" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
-                            <?php echo (isset($unidadeMedida) && $unidadeMedida === 'g') ? 'checked' : ''; ?>> Grama
-                        </label>
-                        <label>
-                            <input type="radio" name="UnidadeMedida" value="mg" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
-                            <?php echo (isset($unidadeMedida) && $unidadeMedida === 'mg') ? 'checked' : ''; ?>> Miligrama
-                        </label>
-                        <label>
-                            <input type="radio" name="UnidadeMedida" value="got" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
-                            <?php echo (isset($unidadeMedida) && $unidadeMedida === 'got') ? 'checked' : ''; ?>> Gotas
-                        </label>
-                        <label>
-                            <input type="radio" name="UnidadeMedida" value="mgo" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
-                            <?php echo (isset($unidadeMedida) && $unidadeMedida === 'mgo') ? 'checked' : ''; ?>> Microgotas
-                        </label>
+                        <div>
+                            <label>
+                                <input type="radio" name="UnidadeMedida" value="ml" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
+                                <?php echo (isset($unidadeMedida) && $unidadeMedida === 'ml') ? 'checked' : ''; ?>> Mililitro
+                            </label>
+                            <label>
+                                <input type="radio" name="UnidadeMedida" value="g" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
+                                <?php echo (isset($unidadeMedida) && $unidadeMedida === 'g') ? 'checked' : ''; ?>> Grama
+                            </label>
+                            <label>
+                                <input type="radio" name="UnidadeMedida" value="mg" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
+                                <?php echo (isset($unidadeMedida) && $unidadeMedida === 'mg') ? 'checked' : ''; ?>> Miligrama
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" name="UnidadeMedida" value="got" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
+                                <?php echo (isset($unidadeMedida) && $unidadeMedida === 'got') ? 'checked' : ''; ?>> Gotas
+                            </label>
+                            <label>
+                                <input type="radio" name="UnidadeMedida" value="mgo" <?php echo ($mode == 'DLT' || $mode == 'DSP') ? 'disabled' : ''; ?>
+                                <?php echo (isset($unidadeMedida) && $unidadeMedida === 'mgo') ? 'checked' : ''; ?>> Microgotas
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>

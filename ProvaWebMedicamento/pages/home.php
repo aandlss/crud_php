@@ -25,10 +25,10 @@
                     <th style="width: 10%; text-align: center;">Registro MS</th>
                     <th style="width: 12%; text-align: center;">Quantidade na embalagem</th>
                     <th style="width: 10%; text-align: center;">Unidade de medida</th>
+                    <th style="width: 10%;"></th>
                     <?php
                     if (isset($_SESSION['usuario']) && $_SESSION['logado'] == true) {
                     ?>
-                    <th style="width: 10%;"></th>
                     <th style="width: 5%; text-align: center;"></th>
                     <th style="width: 5%;"></th>
                     <?php
@@ -45,10 +45,10 @@
                     <td style="text-align: center;"><?php echo $registro['RegistroMS'] ?></td>
                     <td style="text-align: center;"><?php echo $registro['QuantidadePerEmbalagem']." de ".$registro['Concentracao'] ?></td>
                     <td style="text-align: center;"><?php echo $registro['UnidadeMedida'] ?></td>
+                    <td style="width: 5%; text-align: center;"><a href="operacoes-medicamento.php?mode=DSP&idmedicamento=<?php echo $registro['IdMedicamento'] ?>">Visualizar dados</a></td>
                     <?php
                     if (isset($_SESSION['usuario']) && $_SESSION['logado'] == true) {
                     ?>
-                    <td style="width: 5%; text-align: center;"><a href="operacoes-medicamento.php?mode=DSP&idmedicamento=<?php echo $registro['IdMedicamento'] ?>">Visualizar dados</a></td>
                     <td style="width: 5%; text-align: center;"><a href="operacoes-medicamento.php?mode=UPD&idmedicamento=<?php echo $registro['IdMedicamento'] ?>">Editar</a></td>
                     <td style="width: 5%; text-align: center;">
                         <a href="../includes/deletar-medicamento.php?idmedicamento=<?php echo $registro['IdMedicamento'] ?>"

@@ -25,16 +25,13 @@
             $query = "INSERT INTO medicamento (MedicamentoNome, RegistroMS, MedicamentoDescricao, IdTipoMedicamento, Fabricante, QuantidadePerEmbalagem, UnidadeMedida, Concentracao, Bula) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
             $stmt = mysqli_prepare($con, $query);
-            
+            unset($_POST);
             mysqli_stmt_bind_param($stmt, "sssisssss", $medicamentoNome, $registroMS, $medicamentoDescricao, $idTipoMedicamento, $fabricante, $quantidadePerEmbalagem, $unidadeMedida, $concentracao, $bula);
         
-            if (mysqli_stmt_execute($stmt)) { ?> 
-                <div class="btn-container">
-                    <h2>Medicamento inserido com sucesso!</h2>
-                    <a href="../pages/home.php" class="btn btn-primary">Voltar ao Menu Principal</a>
-                    <a href="../pages/operacoes-medicamento.php?mode=INS" class="btn btn-secondary">Cadastrar Novo Medicamento</a>
-                </div>
-            <?php } else {
+            if (mysqli_stmt_execute($stmt)) { 
+                header('Location: ../includes/success.php?from=1&success=1');
+                exit; 
+            } else {
                 echo "<h2>Erro ao inserir medicamento: " . mysqli_error($con) . "</h2>";
             }
             mysqli_stmt_close($stmt);

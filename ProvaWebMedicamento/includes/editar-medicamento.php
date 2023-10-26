@@ -29,16 +29,11 @@
             mysqli_stmt_bind_param($stmt, "sssisssssi", $medicamentoNome, $registroMS, $medicamentoDescricao, $idTipoMedicamento, $fabricante, $quantidadePerEmbalagem, $unidadeMedida, $concentracao, $bula, $idMedicamento);
         
             if (mysqli_stmt_execute($stmt)) {
-            ?>
-                <div class="btn-container">
-                    <h2>Medicamento alterado com sucesso!</h2>
-                    <a href="../pages/home.php" class="btn btn-primary">Voltar ao Menu Principal</a>
-                </div>
-            <?php
+                header('Location: ../includes/success.php?from=2&success=1');
+                exit;
             } else {
                 echo "<h2>Erro ao alterar medicamento: " . mysqli_error($con);
-            }
-        
+            } 
             mysqli_stmt_close($stmt);
         } else {
             header('Location: ../pages/operacoes-medicamento.php');
